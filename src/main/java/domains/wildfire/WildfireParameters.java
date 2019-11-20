@@ -129,15 +129,21 @@ public class WildfireParameters {
     public static int fireIndex;
 
 
-    /** Configuration Strings for all the configuration, which would contain all the information about the size of the premise,
-     * Agents and Fires.
-     * The structure should be as below:
-     * (XY-<x size>-<y-size>, A-<Num of Agents>-<agent x location>-<agent y location>-agent type or power (+),
-     * F-<Fire x location>-<Fire y location>(+))
-     * e.g.(XY-3-2,A-100-0-1-1,A-100-2-1-1,F-0-0,F-1-1,F-2-0)
-     * Premise is 3*2 size. X axis ranges 0-2 (Horizontal) and Y axis ranges (0-1) (Vertical).
-     * In (0,1) and (2,1) each, there are 100 agents of type/power 1.
-     * In (0,0),(1,1) and (2,0) there exist a fire, which can be ignited with the same intensity.
+    /** 
+     * The structure of the configuration strings is be as below:
+     * XY-<x>-<y> defines the length of X and Y axis of the experimental premise.
+     * A-<agents>-<x>-<y>-<agent type> defines the number of agents at ```<x>-<y>``` location of the
+     * <agent type> type. In the AAAI-paper experiments, the type `1` agents are ground fire fighters,
+     * where as type `2` agents are helicopters.
+     *  F-<x>-<y>-<fire type> defines the fire location <x>-<y> and the fire type.
+     *  The constants related to the fire type are defined at the beginning of the class.
+     * P-<agent type>-<agent extinguishing power> defines the extinguishing power of each agent type.
+     * In the AAAI-paper experiments, the ground firefighters have extinguishing power of 0.1,
+     * where as the helicopters have it of 0.2.
+     * MFS-<maximum fire states> defines the maximum number of fire states of each fire.
+     * Here, the 0 fire intensity indicates an extinguished fire, while  <maximum fire state> - 1 indicates a burnt location.
+     * MSS-<maximum agent states> defines the agent's suppressant level.
+     * Here a 0 indicates an empty suppressant level, in which the agents' actions become ineffective.
      */
     public static ArrayList<String> configStrings;
 
